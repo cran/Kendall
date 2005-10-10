@@ -1,0 +1,34 @@
+		FUNCTIONS
+Kendall			Kendall rank correlation
+MannKendall		Mann-Kendall trend test
+SeasonalMannKendall	monthly trend test
+print.Kendall		print Method for Class 'Kendall'
+summary.Kendall		summary Method for Class 'Kendall'
+
+		DATA
+PrecipGL	annual precipitation, Great Lakes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
