@@ -17,6 +17,14 @@ The test is also discussed by Hipel and McLeod (2005).
 
 The score is computed separately for each month.
 
+The purpose of this test is to test for monotonic trend. A common misconception
+is to look for trends in the individual monthly time series.  Usually this does
+not make a lot of sense, in the context of environmental time series,
+since if there is a real trend of interest in the series
+it would not be expected to be greatly changed by seasonality.  If indeed one
+were interested in detecting a trend a particular month then one could use
+the MannKendall trend test for that particular month or group of months.
+
 
 }
 \value{

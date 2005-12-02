@@ -14,7 +14,8 @@ Kendall(x, y)
 }
 \details{
 In many applications x and y may be ranks or even ordered categorical 
-variables. In our function x and y should be numeric vectors.
+variables. In our function x and y should be numeric vectors.  Any observations
+correspondings to NA in either x or y are removed.
 
 Kendall's rank correlation measures the strength of monotonic association
 between the vectors x and y. In the case of no ties in the x and y variables,

@@ -8,6 +8,9 @@ function(x, y)
     score <- 0.0
     varscore <- 0.0
     denom <- 0.0
+    i <- !(is.na(x)|is.na(y))
+    x <- x[i]
+    y <- y[i]
     iws <- numeric(length(x))
     ifault <- 0.0
     outF <- .Fortran("tauk2",

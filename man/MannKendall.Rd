@@ -10,7 +10,7 @@ the Kendall rank correlation of z[t] and t.
 The test was suggested by Mann (1945) and has been extensively used with
 environmental time series (Hipel and McLeod, 2005).
 For autocorrelated time series, the block bootstrap may be used
-to obtain an improved test.
+to obtain an improved signficance test.
 }
 
 \usage{
@@ -63,10 +63,30 @@ MannKendall(PrecipGL)
 #
 #Use block bootstrap 
 library(boot)
-z<-data(PrecipGL)
+data(PrecipGL)
 MKtau<-function(z) MannKendall(z)$tau
-tsboot(PrecipGL, MKtau, R=200, l=5, sim="fixed")
+tsboot(PrecipGL, MKtau, R=500, l=5, sim="fixed")
+#
+# Deseasonalize a monthly time series and use the block bootstrap
+library(boot)
+data(manaus)
+z<-matrix(manaus, ncol=12, byrow=12)
+zm<-apply(z, MARGIN=2, FUN=mean)
+zs<-apply(z, MARGIN=2, FUN=sd)
+z2<-sweep(z, MARGIN=2, STATS=zm) #subtract monthly means
+z3<-sweep(z2, MARGIN=2, STATS=zs, FUN="/") #divide by monthly sd
+zds<-c(t(z3)) 
+attributes(zds)<-attributes(manaus)
+plot(zds)
+#do Mann-Kendall trend test
+MannKendall(zds)
+#check robustness by applying block bootstrap
+MKtau<-function(z) MannKendall(z)$tau
+tsboot(zds, MKtau, R=500, l=12, sim="fixed")
+#the significance level has dropped!
+#it is significant now at about 2 sd
 }
+
 
 \keyword{ nonparametric }
 \keyword{ ts }
