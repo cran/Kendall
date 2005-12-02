@@ -4,6 +4,14 @@
 \description{
 Computes the Kendall rank correlation and its p-value 
 on a two-sided test of H0: x and y are independent.
+If there are no ties, the test is exact and in this case
+it should agree with the base function cor(x,y,method="kendall")
+and cor.test(x,y,method="kendall").
+When there are ties, the normal approximation given in Kendall is
+used as discussed below. 
+In the case of ties,  both Kendall and cor produce the
+same result but cor.test produces a p-value which is not as
+accurate
 }
 \usage{
 Kendall(x, y)
@@ -12,10 +20,11 @@ Kendall(x, y)
   \item{x}{ first variable, a vector }
   \item{y}{ second variable, a vector the same length as x }
 }
+
 \details{
 In many applications x and y may be ranks or even ordered categorical 
-variables. In our function x and y should be numeric vectors.  Any observations
-correspondings to NA in either x or y are removed.
+variables. In our function x and y should be numeric vectors or factors.  
+Any observations correspondings to NA in either x or y are removed.
 
 Kendall's rank correlation measures the strength of monotonic association
 between the vectors x and y. In the case of no ties in the x and y variables,
@@ -27,7 +36,8 @@ where
 and \eqn{D=n(n-1)/2}{D=n(n-1)/2}.
 S is called the score and D, the denominator, is the maximum possible value
 of S. 
-When there are ties, the formula for D is more complicated (Kendall, 1974, Ch. 3).
+When there are ties, the formula for D is more complicated (Kendall, 1974, Ch. 3) and
+this general forumla for ties in both reankings is implemented in our function.
 
 The p-value of tau under the null hypothesis of no association is computed
 by in the case of no ties using an exact algorithm given by Best and Gipps (1974).
@@ -51,6 +61,7 @@ It may also be noted that usual Pearson correlation is fairly robust
 and it usually agrees well in terms of statistical significance with
 results obtained using Kendall's rank correlation.
 
+An error is returned if length(x) is less than 3.
   
 }
 
@@ -61,19 +72,23 @@ A list with class Kendall is returned with the following components:
   \item{S}{Kendall Score}
   \item{D }{denominator, tau=S/D}
   \item{varS }{variance of S}
-Generic functions print.Kendall and summary.Kendall are provided.
 }
-\note{ If you want to use the output from Kendall,
-save the result as in res<-Kendall(x,y) and then select from the list res the
-value(s) needed. }
 
+\note{ 
+Generic functions print.Kendall and summary.Kendall are provided.
+
+If you want to use the output from Kendall,
+save the result as in out<-Kendall(x,y) and then select from the list out the
+value(s) needed. 
+}
 
 \references{
 Best, D.J. and Gipps, P.G. (1974),
 Algorithm AS 71: The Upper Tail Probabilities of Kendall's Tau
 Applied Statistics, Vol. 23, No. 1. (1974), pp. 98-100.
 
-Davison, A.C. and Hinkley, D.V. (1997) Bootstrap Methods and Their Application. Cambridge University Press.
+Davison, A.C. and Hinkley, D.V. (1997) 
+Bootstrap Methods and Their Application. Cambridge University Press.
 
 Kendall, M.G. (1976). Rank Correlation Methods. 4th Ed. Griffin.
 
@@ -81,15 +96,26 @@ Hill, I.D. (1973),
 Algorithm AS 66: The Normal Integral
 Applied Statistics, Vol. 22, No. 3. (1973), pp. 424-427.
 
+Valz, P. (1990).
+Developments in Rank Correlation Procedures
+with Applications to Trend Assessment in Water Resources Research,
+Ph.D. Thesis, Department of Statistical and Actuarial Sciences, The
+University of Western Ontario.
+
 Valz, P.D. and Thompson, M.E. (1994),
 Exact inference for Kendall's S and Spearman's rho. 
 Journal of Computational and Graphical Statistics, 3, 459--472.
 }
 \author{ A.I. McLeod, aim@uwo.ca }
 
-\seealso{ \code{\link{cor}}, \code{\link{print.Kendall}}, \code{\link{summary.Kendall}},
-\code{\link{MannKendall}},\code{\link{SeasonalMannKendall}}
+\seealso{ 
+\code{\link{cor}}, 
+\code{\link{print.Kendall}}, 
+\code{\link{summary.Kendall}},
+\code{\link{MannKendall}},
+\code{\link{SeasonalMannKendall}}
    }
+
 \examples{
 
 #First Example

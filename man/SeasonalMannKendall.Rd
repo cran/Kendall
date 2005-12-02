@@ -1,17 +1,8 @@
 \name{SeasonalMannKendall}
 \alias{SeasonalMannKendall}
 \title{ Mann-Kendall trend test for monthly environmental time series }
+
 \description{
-
-}
-\usage{
-SeasonalMannKendall(x)
-}
-\arguments{
-  \item{x}{ a vector or a time series comprised of consecutive monthly values }
-}
-
-\details{
 Hirst et al. (1982) suggested this test for monthly water quality time series.
 The test is also discussed by Hipel and McLeod (2005).
 
@@ -24,9 +15,16 @@ since if there is a real trend of interest in the series
 it would not be expected to be greatly changed by seasonality.  If indeed one
 were interested in detecting a trend a particular month then one could use
 the MannKendall trend test for that particular month or group of months.
-
-
 }
+
+\usage{
+SeasonalMannKendall(x)
+}
+
+\arguments{
+  \item{x}{ a vector or a time series comprised of consecutive monthly values }
+}
+
 \value{
 A list with class Kendall.
   \item{tau}{ Kendall's tau statistic}
@@ -54,7 +52,7 @@ Electronic reprint of our book orginally published in 1994.
 
 \author{A.I. McLeod, aimcleod@uwo.ca }
 
-\seealso{ \code{\link{MannKendall}} }
+\seealso{\code{\link{MannKendall}}}
 
 \examples{
 #test for monotonic trend in monthly average river height data
@@ -63,8 +61,7 @@ Electronic reprint of our book orginally published in 1994.
 library(boot) 
 data(manaus)
 SeasonalMannKendall(manaus)
-  }
 }
 
 \keyword{ts}
-\keyword{nonparametric }
+\keyword{nonparametric}

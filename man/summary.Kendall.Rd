@@ -7,9 +7,11 @@ the value of Kendall's tau and its two-sided p-value are displayed,
 the Kendall score, its variance and the value of the denominator
 for Kendall tau are printed.
 }
+
 \usage{
-summary.Kendall(object,...)
+\method{summary}{Kendall}(object, ...)
 }
+
 \arguments{
   \item{object}{output from Kendall, MannKendall or SeasonalMannKendall }
   \item{\dots}{any additional arguments}

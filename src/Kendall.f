@@ -130,6 +130,7 @@ C CALCULATE P-VALUE USING NORMAL APPROXIMATION
           Return
        Endif
       Endif
+C THIS ONLY HAPPENS WHEN N<4. aim. 06/07/2009
       IER = 12
       Return
       End

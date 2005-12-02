@@ -2,6 +2,8 @@
 function(x, y)
 {
     #calculate Kendall rank correlation
+    if (length(x) != length(y)) stop("length of inputs muct be equal!")
+    if (length(x) < 3) stop("length(x)<3")
     tau <- 0.0
     ptau <- 0.0
     sltau <- 0.0
@@ -33,7 +35,7 @@ function(x, y)
     denom <- outF[[9]]
     ier <- outF[[11]]
     if(ier != 0.) {
-        cat(paste("WARNING: Error exit, tauk2. IFAULT = ", ier), fill = T)
+        cat(paste("WARNING: Error exit, tauk2. IFAULT = ", ier), fill = TRUE)
     }
     ans <- list(tau = tau, sl = sl, S = sc, D = denom, varS = var.sc)
     oldClass(ans) <- "Kendall"

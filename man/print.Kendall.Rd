@@ -4,9 +4,11 @@
 \description{
 The value of Kendall's tau and its two-sided p-value are displayed.
 }
+
 \usage{
-print.Kendall(x, ...)
+\method{print}{Kendall}(x, ...)
 }
+
 \arguments{
   \item{x}{output from Kendall, MannKendall or SeasonalMannKendall }
   \item{\dots}{any additional arguments}
