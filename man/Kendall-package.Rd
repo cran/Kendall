@@ -13,8 +13,8 @@ Compute Kendall's rank correlation and various trend tests.
 \tabular{ll}{
 Package: \tab Kendall\cr
 Type: \tab Package\cr
-Version: \tab 2.1\cr
-Date: \tab 2009-01-27\cr
+Version: \tab 2.2\cr
+Date: \tab 2011-05-16\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 }
@@ -23,7 +23,8 @@ If you just want to compute Kendall's tau or its signficance level,
 the base function \code{cor} and \code{cor.test} are recommended.
 The purpose of this package is to implement the Mann-Kendall test,
 the seasonal Mann-Kendall trend test as well as computing the 
-Kendall score.
+Kendall score.	 See documentation for Mann-Kendall on using
+the block bootstrap to deal with autocorrelation.
 }
 
 \author{
@@ -33,10 +34,8 @@ Maintainer: aimcleod@uwo.ca
 }
 
 \references{ 
-Hipel, K.W. and McLeod, A.I., (2005).
+Hipel, K.W. and McLeod, A.I., (1994).
 Time Series Modelling of Water Resources and Environmental Systems.
-Electronic reprint of our book orginally published in 1994.
-\url{http://www.stats.uwo.ca/faculty/aim/1994Book/}.
 }
 
 \keyword{ts}
