@@ -1,6 +1,7 @@
 useDynLib(Kendall)
 
 import("boot")
+importFrom("stats", "cycle", "frequency", "is.ts", "pnorm")
 
 export(
 "Kendall",
